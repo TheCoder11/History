@@ -1,0 +1,4 @@
+name: NewsFeed
+version: '${project.version}'
+main: com.somemone.newsfeed.NewsFeed
+api-version: 1.18
