@@ -16,6 +16,7 @@ public class Feed {
     private List<Entry> entries;
     private List<UUID> allowedAuthors;
     private UUID owner;
+    private List<UUID> followers;
 
     private UUID id;
 
@@ -25,6 +26,7 @@ public class Feed {
         this.allowedAuthors = new ArrayList<>();
         allowedAuthors.add(author);
         owner = author;
+        followers = new ArrayList<>();
 
         id = UUID.randomUUID();
     }
@@ -57,6 +59,14 @@ public class Feed {
         if (e.isCancelled())
             entries.remove(entry);
     }
+
+    public void addFollower (UUID player) {this.followers.add(player);}
+
+    public void removeFollower (UUID player) {this.followers.remove(player);}
+
+    public List<UUID> getFollowers() {return followers;}
+
+    public boolean isFollower (UUID player) {return followers.contains(player);}
 
     public UUID getId() {return id;}
 
