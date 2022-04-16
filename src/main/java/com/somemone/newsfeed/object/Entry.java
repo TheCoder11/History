@@ -19,12 +19,14 @@ public class Entry {
     private String content;
     private final UUID uuid;
     private final LocalDateTime time;
+    private int downloads;
 
     public Entry (String title, String content) {
         this.title = title;
         this.content = content;
         this.uuid = UUID.randomUUID();
         this.time = LocalDateTime.now();
+        downloads = 0;
     }
 
     public Entry (String content) {
@@ -32,6 +34,7 @@ public class Entry {
         this.content = content;
         this.uuid = UUID.randomUUID();
         this.time = LocalDateTime.now();
+        downloads = 0;
     }
 
     public ItemStack getBookForm () {
@@ -76,4 +79,8 @@ public class Entry {
     public void setTitle (String title) {
         this.title = title;
     }
+
+    public void addDownload () {downloads++;}
+
+    public int getDownloads () {return downloads;}
 }

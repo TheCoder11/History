@@ -1,6 +1,6 @@
 package com.somemone.newsfeed.inventory;
 
-import com.somemone.newsfeed.feed.Feed;
+import com.somemone.newsfeed.object.Feed;
 import com.somemone.newsfeed.file.FileHandler;
 import com.somemone.newsfeed.util.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllFeedsInventory {
+public class AllFeedsInventory implements InventoryWatcher {
 
     private Player player;
     private SortType currentSort;
@@ -24,22 +24,14 @@ public class AllFeedsInventory {
         this.player = player;
     }
 
-    public Inventory drawSortPage() {
-        Inventory inv = Bukkit.createInventory(null, 9, "Select Filter");
-        inv.addItem(new ItemBuilder(Material.BOOKSHELF).setName(ChatColor.GREEN + "Default Sort").toItemStack());
-        inv.addItem(new ItemBuilder(Material.BOOKSHELF).setName(ChatColor.GREEN + "Most Followed").toItemStack());
-        inv.addItem(new ItemBuilder(Material.BOOKSHELF).setName(ChatColor.GREEN + "Your Follows").toItemStack());
-        return inv;
-    }
-
     public void setSort(SortType sort) {
         currentSort = sort;
     }
 
-    public Inventory getFeedList(int page) {
+    public Inventory drawPage(int page) {
 
         Inventory inv = Bukkit.createInventory(null, 54, "Feeds");
-        feeds = new ArrayList<>();
+        feeds = new ArrayList<Feed>();
 
         switch (currentSort) {
             case DEFAULT:
@@ -57,8 +49,13 @@ public class AllFeedsInventory {
         for (int i = starter; i < feeds.size() || i < starter + 45; i++) {
             inv.setItem(i, new ItemBuilder(Material.BOOKSHELF).setName(ChatColor.GREEN + feeds.get(i).getTitle()).toItemStack());
         }
-        inv.setItem(49, FeedInventory.BACK_BUTTON);
-        inv.setItem(51, FeedInventory.FORWARD_BUTTON);
+
+        if (page > 0) {
+            inv.setItem(49, FeedInventory.BACK_BUTTON);
+        }
+        if (feeds.size() > starter + 45) {
+            inv.setItem(51, FeedInventory.FORWARD_BUTTON);
+        }
 
         return inv;
 

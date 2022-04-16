@@ -1,11 +1,10 @@
-package com.somemone.newsfeed.feed;
+package com.somemone.newsfeed.object;
 
+import com.somemone.newsfeed.object.Feed;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.UUID;
-
-public class PlaceFeed extends Feed{
+public class PlaceFeed extends Feed {
 
     private Location location;
 

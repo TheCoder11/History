@@ -3,12 +3,11 @@ package com.somemone.newsfeed.file;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.somemone.newsfeed.NewsFeed;
-import com.somemone.newsfeed.feed.Feed;
+import com.somemone.newsfeed.object.Feed;
 
 import javax.annotation.Nullable;
 import java.io.*;
 import java.lang.reflect.Type;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;

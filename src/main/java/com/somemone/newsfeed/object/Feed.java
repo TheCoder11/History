@@ -1,4 +1,4 @@
-package com.somemone.newsfeed.feed;
+package com.somemone.newsfeed.object;
 
 import com.somemone.newsfeed.event.RemoveFeedEvent;
 import com.somemone.newsfeed.event.UpdateFeedEvent;
