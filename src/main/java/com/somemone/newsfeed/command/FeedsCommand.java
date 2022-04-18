@@ -1,5 +1,6 @@
 package com.somemone.newsfeed.command;
 
+import com.somemone.newsfeed.inventory.AllFeedsInventory;
 import com.somemone.newsfeed.inventory.SortTypesInventory;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,7 +16,7 @@ public class FeedsCommand implements CommandExecutor {
         if (!(sender instanceof Player)) return false;
         Player player = (Player) sender;
 
-        SortTypesInventory inv = new SortTypesInventory();
+        AllFeedsInventory inv = new AllFeedsInventory(player);
         player.openInventory(inv.drawPage(1));
 
         return true;

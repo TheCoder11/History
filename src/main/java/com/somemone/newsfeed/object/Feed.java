@@ -1,9 +1,11 @@
 package com.somemone.newsfeed.object;
 
+import com.somemone.newsfeed.NewsFeed;
 import com.somemone.newsfeed.event.RemoveFeedEvent;
 import com.somemone.newsfeed.event.UpdateFeedEvent;
 import com.somemone.newsfeed.object.Entry;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ import java.util.List;
 import java.util.UUID;
 
 public class Feed {
+
+    public static NamespacedKey feedKey = new NamespacedKey(NewsFeed.getPlugin(NewsFeed.class), "feed-key");
+
 
     private String title;
     private List<Entry> entries;

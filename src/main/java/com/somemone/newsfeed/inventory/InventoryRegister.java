@@ -9,7 +9,7 @@ public class InventoryRegister {
 
     private static HashMap<Player, InventoryWatcher> inventoryWatchers = new HashMap<Player, InventoryWatcher>();
 
-    public static void addRegister (InventoryWatcher watcher, Player player) {inventoryWatchers.put(player, watcher);}
+    public static void putRegister (InventoryWatcher watcher, Player player) {inventoryWatchers.put(player, watcher);}
 
     public static void closeRegister (Player player) {inventoryWatchers.remove(player);}
 

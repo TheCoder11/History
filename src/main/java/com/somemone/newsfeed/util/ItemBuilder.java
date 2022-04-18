@@ -8,11 +8,14 @@ import java.util.Map;
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.persistence.PersistentDataHolder;
+import org.bukkit.persistence.PersistentDataType;
 
 /**
  * Easily create itemstacks, without messing your hands.
@@ -179,6 +182,16 @@ public class ItemBuilder {
         is.setItemMeta(im);
         return this;
     }
+
+    public ItemBuilder addContainerTag (NamespacedKey key, PersistentDataType type, Object value) {
+        ItemMeta im = is.getItemMeta();
+        if (im instanceof PersistentDataHolder) {
+            im.getPersistentDataContainer().set(key, type, value);
+        }
+        is.setItemMeta(im);
+        return this;
+    }
+
     /**
      * Add a lore line.
      * @param line The lore line to add.
